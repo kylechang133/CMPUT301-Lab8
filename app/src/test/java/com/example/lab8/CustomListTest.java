@@ -53,7 +53,8 @@ public class CustomListTest {
     }
 
     /**
-     *
+     * add a city to the list
+     * delete the city
      */
     @Test
     public void deleteCityTest() {
