@@ -49,6 +49,7 @@ public class CustomListTest {
         list = MockCityList();
         City city = new City("Calgary", "AB");
         list.addCity(city);
+
         assertTrue(list.hasCity(city));
     }
 
@@ -68,5 +69,17 @@ public class CustomListTest {
         assertThrows(NoSuchElementException.class, () -> {
             list.deleteCity(city);
         });
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void countCitiesTest() {
+        list = MockCityList();
+        list.addCity(new City("Estevan", "SK"));
+        list.addCity(new City("Calgary", "AB"));
+
+        assertEquals(2, list.countCities());
     }
 }
