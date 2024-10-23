@@ -1,6 +1,7 @@
 package com.example.lab8;
 
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class CustomListTest {
 
@@ -48,5 +50,22 @@ public class CustomListTest {
         City city = new City("Calgary", "AB");
         list.addCity(city);
         assertTrue(list.hasCity(city));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void deleteCityTest() {
+        list = MockCityList();
+        City city = new City("Calgary", "AB");
+        list.addCity(city);
+
+        assertTrue(list.hasCity(city));
+        list.deleteCity(city);
+
+        assertThrows(NoSuchElementException.class, () -> {
+            list.deleteCity(city);
+        });
     }
 }
